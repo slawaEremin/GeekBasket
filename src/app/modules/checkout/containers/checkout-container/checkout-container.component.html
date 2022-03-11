@@ -1,0 +1,61 @@
+<div class="header">
+  <a class="btn btn--navigation " [routerLink]="'/'">
+    Continue shopping
+  </a>
+
+  <a class="btn btn--navigation btn--with-postfix" [routerLink]="'checkout'">
+    Basket <span class="postfix">{{ (count$ | async) || 0 }}</span>
+  </a>
+</div>
+
+<div class="content">
+  <app-basket-item
+    *ngFor="let item of (basketProducts$ | async); trackBy: trackByFn"
+    [data]="item"
+    (removeItem)="onRemoveFromBasket($event)"
+    (changeQuantity)="onChangeQuantity($event, item)"
+    class="basket-item"></app-basket-item>
+</div>
+
+<div class="footer">
+  <app-promocode-form
+    (applyPromocode)="onApplyPromocode($event)"
+    class="promocode"></app-promocode-form>
+
+  <div class="summary">
+    <div class="summary-item">
+      <div class="summary-label">
+        Sub total
+      </div>
+      <div class="summary-value">
+        {{ subTotal$ | async }}
+      </div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">
+        Promotional discount amount
+      </div>
+      <div class="summary-value">
+        {{ (discount$ | async) || 0 }}
+      </div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">
+        Basket total
+      </div>
+      <div class="summary-value">
+        {{ (basketTotal$ | async) || 0}}
+      </div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">
+        Please enter your credit card number
+      </div>
+      <div class="summary-value">
+        <input type="text" class="base-input">
+      </div>
+    </div>
+  </div>
+
+
+</div>

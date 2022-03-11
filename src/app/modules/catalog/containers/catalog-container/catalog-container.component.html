@@ -1,0 +1,21 @@
+<div class="header">
+  <a class="btn btn--navigation btn--with-postfix" [routerLink]="'checkout'">
+    Basket <span class="postfix">{{ (count$ | async) || 0 }}</span>
+  </a>
+</div>
+
+<div class="content">
+  <app-product-item
+    *ngFor="let item of (products$ | async); trackBy: trackByFn"
+    [product]="item"
+    (addToBasket)="onAddToBasket($event)"
+    class="product-item"></app-product-item>
+</div>
+
+<div class="footer">
+  <a class="btn btn--navigation" [routerLink]="'checkout'">
+    Proceed to checkout
+  </a>
+</div>
+
+

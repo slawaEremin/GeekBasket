@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="name">
+    Name: {{ data?.product?.name }}
+  </div>
+  <div class="count">
+    Quantity:
+    <select
+      (change)="onChangeQuantity($event)">
+      <option *ngFor="let item of values; trackBy: trackByFn"
+              [selected]="data?.quantity === item"
+              [value]="item">{{ item }}</option>
+    </select>
+  </div>
+  <div class="price">
+    Line price: {{ linePrice }}
+  </div>
+  <div class="btn-container">
+    <button type="button"
+            (click)="onRemove()"
+            class="btn btn--action">
+      Remove
+    </button>
+  </div>
+</div>

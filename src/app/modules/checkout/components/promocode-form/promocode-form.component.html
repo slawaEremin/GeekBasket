@@ -1,0 +1,12 @@
+<form [formGroup]="form" class="form" (ngSubmit)="submit()" >
+  <label class="item" >
+    <div class="text">
+      Enter promocode
+    </div>
+    <input class="base-input" formControlName="promoCode"  type="text">
+  </label>
+
+  <button type="submit" class="btn btn--action" [disabled]="form.invalid">
+    Apply
+  </button>
+</form>

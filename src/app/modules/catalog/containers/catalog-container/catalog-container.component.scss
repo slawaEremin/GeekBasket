@@ -1,0 +1,24 @@
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.content {
+  margin-bottom: 30px;
+}
+
+.product-item {
+  display: block;
+
+  &:not(:first-child) {
+    margin-top: 15px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 40px;
+}
